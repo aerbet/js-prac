@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // task 3
+    function toLoginPage() {
+        let login = 'admin';
+        let password = 'pass';
+
+        let loginAnswer = prompt('Enter your login');
+        let getPassword = () => {
+            let passwordAnswer = prompt('Enter your password')
+
+            if (passwordAnswer === password) {
+                alert('Welcome home page ^_^');
+            } else if (passwordAnswer === null) {
+                alert('Login canceled')
+            } else {
+                alert('Wrong password');
+            }
+        };
+
+        if (loginAnswer === login) {
+            getPassword();
+        } else if (loginAnswer === null) {
+            alert('Login canceled')
+        } else {
+            alert('Wrong login');
+        }
+    }
+
+    // toLoginPage();
+
+    // task 4
+    function getDrinks() {
+        const drinks = ['milk', 'beer', 'beer', 'milk', 'milk'];
+
+        for (let i = 0; i <= drinks.length; i++) {
+            if (drinks[i] === 'milk') {
+                console.log('good')
+            } else if (drinks[i] === 'beer') {
+                console.log('bad')
+            }
+        }
+    }
+
+    // getDrinks();
+
+
+    //task 5
+    function drawSymbol() {
+        const fromUser = prompt('Введите символ');
+        let result = '';
+
+        for (let i = 1; i <= 7; i++) {
+            for (let j = 1; j <= 20; j++) {
+                result += fromUser;
+            }
+            result += '\n';
+        }
+
+        alert(result)
+    }
+
+    // drawSymbol();
+
+
+    // task 6
+    function getMultiply() {
+        let firstNum = Math.floor(Math.random() * 9 + 1)
+        let secondNum = Math.floor(Math.random() * 9 + 1)
+
+        const userInput = parseInt(prompt(`What is ${firstNum} * ${secondNum}`))
+
+        if (userInput === (firstNum * secondNum)) {
+            alert('You are right!')
+        } else {
+            alert('Sorry but you are wrong');
+        }
+    }
+
+    // getMultiply();
+
+</script>
+</body>
+</html>

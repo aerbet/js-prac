@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // task 2
+    const Calculator = {
+        read: function () {
+            let firstNum = parseInt(prompt('Write a number'));
+            let secondNum = parseInt(prompt('Write a number'));
+
+            Calculator.firstNum = firstNum;
+            Calculator.secondNum = secondNum;
+        },
+        sum: function () {
+            return Calculator.firstNum + Calculator.secondNum;
+        },
+        multiply: function () {
+            return Calculator.firstNum * Calculator.secondNum;
+        }
+    }
+
+    //Calculator.read();
+    //alert(Calculator.sum());
+    //alert(Calculator.multiply());
+
+
+    // task 3
+
+    const Circle = {
+        radius: function () {
+            Circle.rad = parseInt(prompt('Write radius of circle'));
+        },
+        circumference: function () {
+            return Math.floor((2 * Math.PI * Circle.rad) * 100) / 100;
+        },
+        area: function () {
+            return Math.floor((Math.PI * (Circle.rad ** 2)) * 100) / 100;
+        },
+    }
+
+    //Circle.radius();
+    //alert('Circumference of circle: ' + Circle.circumference());
+    //alert('Are of circle: ' + Circle.area());
+
+
+    // task 4 variant 1
+
+    const initialList = ['Petya', 'Vasya', 'Lena', 'Kris', 'Liza', 'Aleksandr', 'Erbol', 'Islam', 'Vlad', 'Ali'];
+    const Host = {
+        setGuestList: function () {
+            return initialList[Math.floor(Math.random() * initialList.length)]; // получаем числа а не имена
+        },
+        getGuestList: function () {
+            const finalList = [];
+
+            for (let i = 0; i < Math.floor(Math.random() * 10); i++) {
+                finalList.push(this.setGuestList());
+            }
+
+            return [...new Set(finalList)];
+            // console.log(finalList.filter((value, index) => finalList.indexOf(value) === index))
+            // рассмотреть оба варинта Set и filter в подробностях чтобы в дальнейшем не было проблем
+        }
+    }
+
+    Host.setGuestList();
+    console.log(`Изначально было ${initialList.length} гостей`);
+    console.log(`Хост пригласил ${Host.getGuestList().length} гостей`);
+    console.log(`На вечеринке будут: ${Host.getGuestList()}`)
+
+    // task 4 variant 2
+
+    const guestArr = ['Kirill', 'Maksim', 'Oleg', 'Sasha', 'Papich']
+
+    const HostV = {
+        setGuestList: function () {
+            for (let i = 0; i < guestArr.length; i++) {
+                if (Math.random() < 0.8) {
+                    this.guestList.push(guestArr[i]);
+                }
+            }
+        },
+        guestList: []
+    }
+
+    //HostV.setGuestList();
+    //console.log(`Было ${guestArr.length}`);
+    //console.log(`Выбрали ${HostV.guestList.length}`);
+    //console.log(`Имена ${HostV.guestList.join(', ')}`);
+
+
+    // task 5
+
+    const Elevator = {
+        toFloor: function(userNum) {
+            if (userNum > Elevator.printFloor) {
+                for (let i = Elevator.printFloor; i <= userNum; i++) {
+                    console.log(`Elevator is on the ${i} floor`);
+                }
+
+                Elevator.printFloor = userNum;
+            } else if (userNum < Elevator.printFloor) {
+                for (let i = Elevator.printFloor; i >= userNum; i--) {
+                    console.log(`Elevator is on the ${i} floor`);
+                }
+                Elevator.printFloor = userNum;
+            }
+        },
+        upOneFloor: function() {
+            Elevator.printFloor++;
+        },
+        downOnwFloor: function() {
+            Elevator.printFloor--;
+        },
+        printFloor: 1,
+    }
+
+    /*Elevator.toFloor(9);
+    console.log(Elevator.printFloor);
+    Elevator.toFloor(2);
+    console.log(Elevator.printFloor);
+
+    Elevator.upOneFloor();
+    console.log(Elevator.printFloor);
+    Elevator.downOnwFloor();
+    console.log(Elevator.printFloor);*/
+</script>
+</body>
+</html>

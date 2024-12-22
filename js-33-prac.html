@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="first">
+
+</div>
+
+<ul id="todo">
+    <li>Play dota</li>
+    <li>Take break</li>
+    <li>Start career</li>
+    <li>Drink juice</li>
+</ul>
+
+<script>
+const todoList = document.getElementById("todo");
+const element = document.createElement("li");
+element.innerHTML = "Love cybersport";
+todoList.replaceChild(element, todoList.children[0])
+
+
+const divR = document.getElementById("first");
+const button = document.createElement("button");
+const colorArr = ['pink', 'blue', 'green', 'yellow'];
+
+button.innerText = "Change"
+
+setTimeout(() => {
+    button.addEventListener("click", () => {
+        button.style.background = colorArr[Math.floor(Math.random() * colorArr.length)];
+        for (let i = 1; i < 3; i++) {
+            const divC = document.createElement("div")
+            divC.innerHTML = "dalbaeb delai";
+            divR.appendChild(divC);
+        }
+    })
+}, 500)
+
+document.body.insertBefore(button, document.body.firstChild);
+
+const task = document.createElement("div");
+const todo = document.createElement("div");
+const completed = document.createElement("div");
+
+const btn = document.createElement("button");
+btn.innerText = "Change task status";
+document.body.appendChild(btn);
+const btn1 = document.createElement("button");
+btn1.innerText = "Change task status";
+document.body.appendChild(btn1);
+
+document.body.appendChild(todo);
+document.body.appendChild(completed);
+todo.innerHTML = "todo:"
+todo.style.color = "yellow"
+completed.innerHTML = "completed:"
+completed.style.color = "green"
+task.innerHTML = "Create and launch first pet project";
+
+btn.addEventListener("click", () => {
+    todo.insertBefore(task, todo.lastElementChild);
+})
+
+btn1.addEventListener("click", () => {
+    completed.appendChild(task);
+})
+
+</script>
+</body>
+</html>

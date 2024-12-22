@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // task 1
+
+    // let c = parseInt(prompt('Введите температуру в цельсиях'));
+
+    function convert(cel) {
+        let f = (cel * 9 / 5) + 32;
+
+        alert('Температура в фаренгейтах ' + f)
+    }
+
+    // convert(c);
+
+    // task 2
+    // Узнать почему аргумент функции можно сравнивать с null, если даже идёт функция parseInt()
+
+    //let user = prompt('Введите число');
+
+    function validate(fromUser) {
+        parseInt(fromUser)
+
+        if (isNaN(fromUser)) {
+            alert('You wrote not a number');
+        } else if (fromUser === null) {
+            alert('Вы нажали Отмена')
+        } else if (fromUser < 0) {
+            alert('Вы ввел отрицательное число');
+        } else if (fromUser > 0) {
+            alert('Вы ввели положительное число')
+        } else if (fromUser === '') {
+            alert('Вы ничего не ввели')
+        } else if (Math.sign(fromUser) === 0) {
+            alert('Вы ввели 0')
+        }
+    }
+
+    //validate(user);
+
+    // task 3
+
+    // let fromUser = parseInt(prompt('Введите число'));
+    // let fromU = prompt('Введите степень');
+
+    function mathPow(x, y) {
+        parseInt(y)
+
+        let result = x ** y;
+        if (y === '') {
+            result = x * x;
+        }
+        alert(result)
+    }
+
+    // mathPow(fromUser, fromU);
+
+    // task 4
+
+    //let userSent = prompt('Введите строку из букв');
+    //let userString = prompt(Введите символ из ${userSent} и я посчитаю их кол-во);
+    //if (userSent === null) {
+    //   alert('Нужно ввести строку из символов')
+    // }
+    // function getStringNum(user, str) {
+    //     let arr = [];
+
+    // for (let i = 0; i <= user.length + 1; i++) {
+    //    if (str === user[i]) {
+    //        arr.push(str);
+    //    }
+    // }
+    //
+    // alert(arr.length);
+    // }
+
+    // getStringNum(userSent, userString);
+
+
+
+    // task 5
+
+    const southData = [];
+    const westData = [];
+    const eastData = [];
+    const northData = [];
+
+    function generateNums(arr) {
+        for (let i = 1; i <= 7; i++) {
+            let rand = Math.floor(Math.random() * 13 + 13);
+
+            arr.push(rand);
+        }
+        return arr;
+    }
+
+    generateNums(southData)
+    generateNums(westData)
+    generateNums(eastData)
+    generateNums(northData)
+
+    let sum = 0;
+    let middle = 0;
+
+    function getMiddleTemp(arr, total) {
+        for (let i = 0; i < arr.length; i++) {
+            total += arr[i];
+        }
+
+        middle = Math.floor((total * 10) / arr.length) / 10;
+
+        return middle;
+    }
+
+    console.log('Средняя температура Севера: ' + getMiddleTemp(northData, sum))
+    console.log('Средняя температура Востока: ' + getMiddleTemp(eastData, sum))
+    console.log('Средняя температура Запада: ' + getMiddleTemp(westData, sum))
+    console.log('Средняя температура Юга: ' + getMiddleTemp(southData, sum))
+
+</script>
+</body>
+</html>

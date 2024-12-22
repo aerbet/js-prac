@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="strings">
+    <h3>Task 1</h3>
+    <div id="string">Ядра в вёдра, выдру в тундру!</div>
+    <div id="string-2">Выдрав с выдры в тундре гетры</div>
+    <div id="string-3">В недрах тундры, выдры в гетрах </div>
+    <div id="string-4">Вытру гетрой выдре морду </div>
+    <div id="string-5">Тырят в вёдра ядра кедров!</div>
+    <div id="string-6">Вытру выдрой ядра кедров</div>
+</div>
+
+<button id="btn">Click</button>
+
+<div class="task2">
+    <h3>Task 2</h3>
+    <div class="element">Element 1</div>
+    <div class="element">Element 2</div>
+    <div class="element">Element 3</div>
+    <div class="element">Element 4</div>
+    <div class="element">Element 5</div>
+    <div class="element">Element 6</div>
+</div>
+
+<div class="task3">
+    <ol id="todo-list"></ol>
+</div>
+
+<div class="task4">
+    <article>
+        <h3>Lorem</h3>
+        <p>Lorem Ipsum is simply a dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+        <h3>Lorem</h3>
+        <p>Lorem Ipsum is simply a dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+        <h3>Lorem</h3>
+        <p>Lorem Ipsum is simply a dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+    </article>
+</div>
+
+<script>
+    //task 1 code
+    const string1 = document.getElementById("strings");
+    const btn = document.getElementById("btn");
+
+    console.log(`${string1.children[2].innerHTML}\n${string1.children[4].innerHTML}\n${string1.children[1].innerHTML}\n${string1.children[5].innerHTML}\n${string1.children[3].innerHTML}\n${string1.children[0].innerHTML}`);
+
+    btn.addEventListener("click", () => {
+        console.log(string1.children[Math.floor(Math.random() * string1.children.length)])
+    })
+
+    //task 2 code
+
+    const elements = document.querySelectorAll(".element");
+
+    for (let i = 0; i < elements.length; i++) {
+        if (i < 3) {
+            elements[i].style.color = "red"
+        } else {
+            elements[i].style.color = "green";
+        }
+    }
+
+    // task 3 code
+
+    const tasks = ['Buy lemonade', 'Make toasts', 'Repair car', 'Play games', 'Pet a cat'];
+    const olList = document.querySelector("#todo-list");
+    olList.style.marginLeft = "-25px";
+
+    for (let i = 0; i < tasks.length; i++) {
+        const list = document.createElement("li");
+        list.className = "task";
+        list.innerHTML = tasks[i];
+        olList.appendChild(list);
+    }
+
+    // task 4 code
+
+    const par = document.querySelectorAll("p");
+
+    for (let i = 0; i < par.length; i++) {
+        const hr = document.createElement("hr")
+        par[i].appendChild(hr)
+    }
+
+    
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // task 1
+    function getNumbers() {
+        let firstInput = parseInt(prompt('Введите число'));
+        let secondInput = parseInt(prompt('Введите число'));
+
+        if (firstInput === secondInput) {
+            alert('Числа равны')
+        } else if (firstInput > secondInput) {
+            alert('Первое число больше второго')
+        } else if (secondInput > firstInput) {
+            alert('Второе число больше первого')
+        } else {
+            alert('Вы не ввели число')
+        }
+    }
+
+
+    // task 2 (variant 1)
+    function drawSquare() {
+        let text = 'Hello, world';
+        let symbol = '*'
+        let result = '';
+
+        for (let i = 1; i <= text.length + 4; i++) {
+            result += symbol;
+        }
+
+        alert(`${result}\n* ${text} *\n${result}`)
+    }
+
+    // task 2 (variant 2)
+    function drawSquareBeta() {
+        let text = 'Hello, world';
+        let symbol = '*'
+        let square = symbol.repeat(text.length + 4);
+
+        alert(`${square}\n* ${text} *\n${square}`);
+    }
+
+
+    //task 3
+    function getBirthInfo() {
+        let birthYear = parseInt(prompt('Введите год вашего рождения'));
+        let infoYear = new Date().getFullYear();
+        let infoMonth = Math.floor(((infoYear - birthYear) * 365 / 30) + 5);
+        let infoDays = infoMonth * 30;
+        let infoHours = infoDays * 24;
+        let infoMinutes = infoHours * 60;
+        let infoSeconds = infoMinutes * 60;
+        let infoMilSeconds = infoSeconds * 1000;
+
+        alert(`К 22.10.2024 вы прожили:\n${infoMonth} месяцев\n${infoDays} дней\n${infoHours} часов\n${infoMinutes} минут\n${infoSeconds} секунд\n${infoMilSeconds} милисекунд\n`)
+    }
+
+    // task 4
+    function getArithmetic() {
+        let iter = 0;
+        let sum = 0;
+
+        while (true) {
+            let user = prompt('Type a number from 1 to 100');
+            let parseUser = parseInt(user);
+
+            if (user !== null && parseUser > 0 && parseUser < 101) {
+                sum += parseUser;
+                iter++;
+            } else if (user === null) {
+                alert('Your middle arithmetic num: ' + sum/iter);
+                break;
+            } else {
+                alert('Try again')
+            }
+        }
+    }
+
+
+    // task 5
+    function getMultiplyStats() {
+        let wrong = 0;
+        let correctStat = 0;
+        let questions = 0;
+
+        while (true) {
+            let firstNum = Math.floor(Math.random() * 9 + 1);
+            let secondNum = Math.floor(Math.random() * 9 + 1);
+            let correct = firstNum * secondNum;
+
+            let user = prompt(`Сколько будет ${firstNum} * ${secondNum}`);
+            let parseUser = parseInt(user);
+
+            if (user === null) {
+                alert(`Кол-во вопросов: ${questions}\nПравильных ответов: ${correctStat}\nНе правильных ответов: ${wrong}`);
+                break;
+            } else if (correct !== parseUser) {
+                wrong++;
+                questions++;
+            } else if (correct === parseUser) {
+                correctStat++;
+                questions++;
+            }
+        }
+    }
+
+    // getMultiplyStats();
+
+    // task 6
+
+    function getLocation() {
+        const border = {
+            x: 12,
+            y: 6
+        }
+
+        let userX = parseInt(prompt('Введите ваши координаты по X'));
+        let userY = parseInt(prompt('Введите ваши координаты по Y'));
+
+        if (userX === border.x && userY === border.y) {
+            alert('Вы живете на границе');
+        } else if (userX < border.x && userY > border.y) {
+            alert('Вы живете в NW части страны');
+        } else if (userX > border.x && userY > border.y) {
+            alert('Вы живете в NE части страны');
+        } else if (userY < border.y && userX < border.x) {
+            alert('Вы живете в SW части страны');
+        } else if (userY < border.y && userX > border.x) {
+            alert('Вы живете в SE части страны');
+        } else {
+            alert('Не верные координаты');
+        }
+    }
+
+    // task 7
+
+    let arrNine = [];
+    let arrEight = [];
+    let arrSeven = [];
+    let arrSix = [];
+    let arrFive = [];
+    let arrFour = [];
+    let arrThree = [];
+    let arrTwo = [];
+    let arrOne = [];
+    let arrZero = [];
+
+    for (let i = 1; i <= 100000; i++) {
+        let x = Math.floor(Math.random() * 10);
+
+        if (x === 9) {
+            arrNine.push(x);
+        } else if (x === 8) {
+            arrEight.push(x);
+        } else if (x === 7) {
+            arrSeven.push(x);
+        } else if (x === 6) {
+            arrSix.push(x);
+        } else if (x === 5) {
+            arrFive.push(x);
+        } else if (x === 4) {
+            arrFour.push(x);
+        } else if (x === 3) {
+            arrThree.push(x);
+        } else if (x === 2) {
+            arrTwo.push(x);
+        } else if (x === 1) {
+            arrOne.push(x);
+        } else if (x === 0) {
+            arrZero.push(x);
+        }
+    }
+
+    console.log('Всего сгенерировано девяток: ' + arrNine.length)
+    console.log('Всего сгенерировано восьмерок: ' + arrEight.length);
+    console.log('Всего сгенерировано семерок: ' + arrSeven.length)
+    console.log('Всего сгенерировано шестерок: ' + arrSix.length);
+    console.log('Всего сгенерировано пятерок: ' + arrFive.length)
+    console.log('Всего сгенерировано четверок: ' + arrFour.length);
+    console.log('Всего сгенерировано троек: ' + arrThree.length)
+    console.log('Всего сгенерировано двоек: ' + arrTwo.length);
+    console.log('Всего сгенерировано однерок: ' + arrOne.length)
+    console.log('Всего сгенерировано нулей: ' + arrZero.length);
+
+</script>
+</body>
+</html>

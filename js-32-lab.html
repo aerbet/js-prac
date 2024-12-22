@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // task 1
+
+    const Game = {
+        startGame: function () {
+          let userTotal = 0;
+          let computerTotal = 0;
+          let draw = 0;
+
+          while (true) {
+              let computerChoice = Math.floor(Math.random() * 3 + 1);
+
+              let user = prompt(`Сыграй против компьютера, что ты выберешь? \n1. Камень\n2. Ножницы\n3. Бумага`);
+              let parsedUser = parseInt(user);
+
+              if(user === null) {
+                  alert(`Общий счёт:\nИгрок: ${userTotal}\nКомпьютер: ${computerTotal}\nНичьи: ${draw}`);
+                  break;
+              } else if ((parsedUser === 2) && computerChoice === 3) {
+                  alert(`Вы выигрываете компьютер\nВы выбрали: Ножницы\nКомпьютер выбрал: Бумага`);
+                  userTotal++;
+              } else if ((parsedUser === 3) && computerChoice === 2) {
+                  alert(`Компьютер выигрывает вас\nВы выбрали: Бумага\nКомпьютер выбрал: Ножницы`);
+                  computerTotal++;
+              } else if ((parsedUser === 1) && computerChoice === 2) {
+                  alert(`Вы выигрываете компьютер\nВы выбрали: Камень\nКомпьютер выбрал: Ножницы`);
+                  userTotal++;
+              } else if ((parsedUser === 2) && computerChoice === 1) {
+                  alert(`Компьютер выигрывает вас\nВы выбрали: Ножницы\nКомпьютер выбрал: Камень`);
+                  computerTotal++;
+              } else if ((parsedUser === 3) && computerChoice === 1) {
+                  alert(`Вы выигрываете компьютер\nВы выбрали: Бумага\nКомпьютер выбрал: Камень`);
+                  userTotal++;
+              } else if ((parsedUser === 1) && computerChoice === 3) {
+                  alert(`Компьютер выигрывает вас\nВы выбрали: Камень\nКомпьютер выбрал: Бумага`);
+                  computerTotal++;
+              } else if (computerChoice === parsedUser) {
+                  alert('Ничья');
+                  draw++;
+              }
+          }
+        }
+    }
+
+    // Game.startGame();
+
+
+    // task 2
+
+    const wordArr = ['apple', 'banana', 'pear', 'juice', 'pedro', 'cyber'];
+    const randNum = Math.floor(Math.random() * wordArr.length);
+    const hiddenArr = wordArr[randNum].split('').map(() => '*');
+    const joined = hiddenArr.join('')
+
+    while(true) {
+        
+    }
+
+
+
+</script>
+</body>
+</html>
