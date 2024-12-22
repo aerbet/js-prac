@@ -28,26 +28,47 @@
 </div>
 
 <div class="task3">
+    <h3>Task 3</h3>
     <ol id="todo-list"></ol>
 </div>
 
 <div class="task4">
+    <h3>Task 4</h3>
     <article>
-        <h3>Lorem</h3>
+        <h4>Lorem</h4>
         <p>Lorem Ipsum is simply a dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
-        <h3>Lorem</h3>
+        <h4>Lorem</h4>
         <p>Lorem Ipsum is simply a dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
-        <h3>Lorem</h3>
+        <h4>Lorem</h4>
         <p>Lorem Ipsum is simply a dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
     </article>
 </div>
 
+<div class="task5">
+    <h3>Task 5</h3>
+    <div class="item">Milk 1 l.<span class="qty">x 2</span></div>
+    <div class="item">Cola 1.5 l. <span class="qty">x 1</span></div>
+    <div class="item">Bread<span class="qty">x 2</span></div>
+    <div class="item">Cheese<span class="qty">x 1</span></div>
+    <div class="item">Chocolate bar<span class="qty"> x 3</span></div>
+</div>
+
+<div class="task6">
+    <h3>Task 6</h3>
+    <ul id="task6">
+    </ul>
+</div>
+
 <script>
+    const main = document.querySelectorAll("h3");
+    main.forEach((e) => {
+        e.style.color = "orange"
+    })
     //task 1 code
     const string1 = document.getElementById("strings");
     const btn = document.getElementById("btn");
 
-    console.log(`${string1.children[2].innerHTML}\n${string1.children[4].innerHTML}\n${string1.children[1].innerHTML}\n${string1.children[5].innerHTML}\n${string1.children[3].innerHTML}\n${string1.children[0].innerHTML}`);
+    console.log(`${string1.children[3].innerHTML}\n${string1.children[5].innerHTML}\n${string1.children[2].innerHTML}\n${string1.children[6].innerHTML}\n${string1.children[4].innerHTML}\n${string1.children[1].innerHTML}`);
 
     btn.addEventListener("click", () => {
         console.log(string1.children[Math.floor(Math.random() * string1.children.length)])
@@ -87,8 +108,34 @@
         par[i].appendChild(hr)
     }
 
+    // task 5 code
     
+    const cart = document.querySelectorAll(".item")
+    const sub = document.querySelector(".task5")
 
+    cart[1].remove();
+    cart[4].children[0].innerHTML = " x4";
+    sub.children[3].childNodes[0].textContent = "Canned fish"
+
+    // task 6 code
+
+    const listUser = document.querySelector("#task6");
+
+    function startFunc() {
+        while(true) {
+            const user = prompt("Write some text");
+            const list = document.createElement("li")
+            list.innerHTML = user;
+            listUser.appendChild(list)
+            if (user === null) {
+                listUser.lastChild.remove();
+                break;
+            }
+        }
+
+    }
+
+    startFunc()
 
 </script>
 </body>
