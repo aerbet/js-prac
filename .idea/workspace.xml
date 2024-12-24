@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b8eaf61-bd50-411c-838d-23fd262965e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js34/js-34.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js34/js-34.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js34/js34.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/git_toolbox_blame.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/js-attractor.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js34/js-34.html" beforeDir="false" afterPath="$PROJECT_DIR$/js34/js-34.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js34/js-34.js" beforeDir="false" afterPath="$PROJECT_DIR$/js34/js-34.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js34/js34.css" beforeDir="false" afterPath="$PROJECT_DIR$/js34/js34.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +19,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -47,6 +43,7 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -64,6 +61,13 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\Desktop\js-attractor\js34" />
     </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -90,6 +94,7 @@
       <workItem from="1734850704544" duration="7074000" />
       <workItem from="1734881425233" duration="1777000" />
       <workItem from="1734968302177" duration="6088000" />
+      <workItem from="1735037493929" duration="3246000" />
     </task>
     <servers />
   </component>
