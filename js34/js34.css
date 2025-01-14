@@ -5,6 +5,9 @@
 
 body {
     position: relative;
+    width: 1440px;
+    max-width: 1440px;
+    overflow-x: hidden;
 }
 
 .square {
