@@ -1,13 +1,13 @@
-const listUser = document.querySelector("#task6");
+const listUser = $("#task6");
 
 function startFunc() {
   while(true) {
     const user = prompt("Write some text");
-    const list = document.createElement("li")
-    list.innerHTML = user;
-    listUser.appendChild(list)
+    const list = $("<li></li>").text(user);
+    list.html(user);
+    listUser.append(list)
     if (user === null) {
-      listUser.lastChild.remove();
+      listUser.children().last().remove();
       break;
     }
   }
