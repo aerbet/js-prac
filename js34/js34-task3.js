@@ -14,4 +14,4 @@ function startFunc() {
   
 }
 
-startFunc()
+// startFunc()
