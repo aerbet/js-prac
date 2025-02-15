@@ -6,7 +6,7 @@ function customAlert(bool) {
     overlay.style.left = '0';
     overlay.style.width = '100%';
     overlay.style.height = '100%';
-    overlay.style.background = 'rgba(0, 0, 0, 0.4)';
+    overlay.style.background = 'rgba(0, 0, 0, 0.82)';
     overlay.style.opacity = '0';
     overlay.style.zIndex = '999';
   
@@ -28,7 +28,8 @@ function customAlert(bool) {
     div.innerHTML = `
     <h1 style="margin: 0">Title</h1>
     <h3 style="margin: 0">Some text</h3>
-    <button id="alertBtn">Click</button>
+    <button id="confirm">Confirm</button>
+    <button id="cancel">Cancel</button>
   `
     
     document.body.appendChild(overlay)
@@ -47,12 +48,20 @@ function customAlert(bool) {
       setTimeout(() => {
         overlay.remove();
         div.remove();
-        document.querySelector('#btn').style.display = 'block';
+        document.querySelector('#btn').style.opacity = '1';
       }, 77)
     }
     
-    document.getElementById('alertBtn').addEventListener('click', closeAlert);
+    document.getElementById('confirm').addEventListener('click', () => {
+      console.log(true)
+      closeAlert();
+    });
+    
+    document.getElementById('cancel').addEventListener('click', () => {
+      console.log(false)
+      closeAlert();
+    });
+    
     overlay.addEventListener('click', closeAlert);
-
   }
 }
