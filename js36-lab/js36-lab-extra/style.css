@@ -1,0 +1,19 @@
+.tabs {
+    display: flex;
+}
+
+.item {
+    margin-right: 10px;
+}
+
+.content-item {
+    display: none;
+}
+
+.active {
+    color: #12cbd0;
+    font-weight: bold;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
