@@ -13,13 +13,38 @@
 </head>
 <body>
 
-<button id="btn">Show alert</button>
+<div class="container">
+	<div class="buttons">
+		<button id="btnAlert">Show alert</button>
+		<button id="btnConfirm">Show confirm</button>
+		<button id="btnPrompt">Show prompt</button>
+	</div>
+</div>
+
 
 <script>
-	btn.addEventListener('click', () => {
-		customAlert(true)
-        btn.style.opacity = '0';
+  	const btnAlert = document.getElementById('btnAlert');
+    const btnConfirm = document.getElementById('btnConfirm');
+    const btnPrompt = document.getElementById('btnPrompt');
+
+    btnAlert.addEventListener('click', () => {
+		customAlert('Заявка', 'Ваша заявка была принята')
+      btnAlert.style.opacity = '0';
 	})
+
+    btnConfirm.addEventListener('click', () => {
+      customConfirm('Согласие на взрыв', 'Вы уверены в своём решении?', (result) => {
+        console.log(result)
+	  })
+      btnConfirm.style.opacity = '0';
+    })
+
+    btnPrompt.addEventListener('click', () => {
+      customPrompt('Причина', 'Напишите причину опоздания', (input) => {
+        console.log(input)
+	  })
+      btnPrompt.style.opacity = '0';
+    })
 </script>
 </body>
 </html>
