@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    const categories = [
+        {
+            name: 'Одежда',
+            children: [
+                {name: 'Платья'},
+                {name: 'Костюмы'},
+                {
+                    name: 'Футболки',
+                    children: [
+                        {name: 'Однотонные футболки'},
+                        {name: 'Цветные футболки'},
+                        {
+                            name: 'Майки',
+                            children: [
+                                {name: 'Белые'},
+                                {name: 'Черные'},
+                            ]
+                        }
+                    ]
+                },
+            ]
+        },
+        {
+            name: 'Обувь'
+        },
+        {
+            name: 'Аксессуары'
+        }
+    ]
+
+    const createCategories = (data) => {
+        const ul = document.createElement('ul');
+
+        for (let item of data) {
+            const li = document.createElement('li');
+            li.innerHTML = item.name;
+
+            if (item.children) {
+                const innerUl = createCategories(item.children);
+                li.appendChild(innerUl);
+            }
+
+            ul.append(li);
+        }
+
+        return ul;
+    }
+
+    const tree = createCategories(categories);
+    document.body.appendChild(tree);
+</script>
+
+
+</body>
+</html>
