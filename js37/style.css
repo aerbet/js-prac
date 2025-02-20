@@ -38,3 +38,7 @@ textarea {
     cursor: pointer;
     user-select: none;
 }
+
+#textBlock {
+    display: none;
+}
