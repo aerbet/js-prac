@@ -1,3 +1,8 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
 textarea {
     resize: none;
     width: 300px;
@@ -6,13 +11,26 @@ textarea {
     display: block;
 }
 
+#login {
+    width: 220px;
+    height: 30px;
+}
+
+.userButtons {
+    display: flex;
+}
+
 .buttons {
     display: flex;
     justify-content: center;
     margin: 20px auto;
 }
 
-#save {
+.userButtons {
+    margin-top: 20px;
+}
+
+.btns {
     margin-right: 10px;
     width: 100px;
     height: 40px;
@@ -23,22 +41,9 @@ textarea {
     border: 1px solid #4137d9;
     border-radius: 5px;
     cursor: pointer;
-    user-select: none;
-}
-
-#clear {
-    width: 100px;
-    height: 40px;
-    text-align: center;
-    align-content: center;
-    color: white;
-    background: #4137d9;
-    border: 1px solid #4137d9;
-    border-radius: 5px;
-    cursor: pointer;
-    user-select: none;
 }
 
 #textBlock {
     display: none;
+    margin-left: 50px;
 }

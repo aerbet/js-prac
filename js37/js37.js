@@ -22,25 +22,27 @@ function openText () {
     clearBtn.addEventListener('click', () => {
         localStorage.removeItem('text');
         textArea.value = '';
-        localStorage.clear();
     })
 }
 
 const userName = document.querySelector('#login');
 const loginBtn = document.querySelector('#loginBtn');
+const saveBtn = document.querySelector('#saveBtn');
+const userArr = JSON.parse(localStorage.getItem('userNames')) || [];
+
+saveBtn.addEventListener('click', () => {
+    if (userName.value !== '') {
+        userArr.push(userName.value)
+        localStorage.setItem('userNames', JSON.stringify(userArr));
+    }
+});
 
 loginBtn.addEventListener('click', () => {
-    let userCount = localStorage.getItem('userCount') || 1;
-    
-    if (userName.value !== '') {
-        userCount++;
-        localStorage.setItem('userCount', userCount)
-        localStorage.setItem(`user${userCount}`, userName.value)
-        
-        console.log(localStorage.key(0)) // i'll find out why i'm getting random numbers of localStorage keys
-    }
-    
-    if (userName.value === localStorage.key(0)) {
+    let userInfo = JSON.parse(localStorage.getItem('userNames'));
+
+    if (userInfo.includes(userName.value)) {
         openText();
+    } else {
+        document.querySelector('#textBlock').style.display = 'none';
     }
 })
