@@ -1,6 +1,7 @@
 .container {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 textarea {
@@ -44,6 +45,12 @@ textarea {
 }
 
 #textBlock {
-    display: none;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
     margin-left: 50px;
+    padding: 10px;
+    transform: translate(0%, 22%) scale(0.8);
+    border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
