@@ -54,3 +54,12 @@ textarea {
     border-radius: 10px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
+#userBlock {
+    visibility: visible;
+    pointer-events: visible;
+    opacity: 1;
+    transform: translate(0%, 0%) scale(1);
+    border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
