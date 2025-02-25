@@ -1,3 +1,12 @@
 img {
     width: 200px;
 }
+
+.countryBlock {
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-22%, 0%) scale(0.8);
+    border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
