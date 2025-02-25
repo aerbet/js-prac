@@ -17,7 +17,7 @@ btn.addEventListener('click', () => {
             countryBlock.style.pointerEvents = 'visible';
             countryBlock.style.opacity = '1';
             countryBlock.style.transform = 'translate(0%, 0%) scale(1)';
-        }, 100)
+        }, 100);
 
         const request = config => {
             const xhr = new XMLHttpRequest();
@@ -52,7 +52,7 @@ btn.addEventListener('click', () => {
             method: 'GET',
             url: `https://restcountries.com/v2/name/${country.value}`,
             error: message => {
-                console.log('Error', message);
+                alert(`Error ${message}`);
             },
         })
     }
