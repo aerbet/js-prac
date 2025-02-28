@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.id {
+    padding: 0 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 30px;
+    align-content: center;
+}
+
+.userTitle {
+    padding: 0 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 30px;
+    align-content: center;
+}
+
+.userStatus {
+    padding: 0 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 30px;
+    align-content: center;
+}
+
+#todoBtn {
+    display: block;
+    margin: 10px auto;
+}
