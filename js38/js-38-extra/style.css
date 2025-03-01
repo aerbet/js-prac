@@ -1,6 +1,7 @@
 .container {
-    display: flex;
-    justify-content: center;
+    display: block;
+    margin: 0 auto;
+    padding: 0 10px;
 }
 
 .id {
@@ -27,7 +28,12 @@
     align-content: center;
 }
 
-#todoBtn {
-    display: block;
-    margin: 10px auto;
+.todosBody {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 22px;
+}
+
+.todosItems {
+    margin-right: 10px;
 }
