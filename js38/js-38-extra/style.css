@@ -1,39 +1,84 @@
+body {
+    background: #bbc7ce;
+    margin: 0;
+}
+
 .container {
-    display: block;
+    display: flex;
     margin: 0 auto;
     padding: 0 10px;
 }
 
 .id {
-    padding: 0 5px;
-    border: 1px solid black;
+    padding: 0 10px;
+    border: 1px solid;
+    background: #5B8E7D;
     border-radius: 5px;
-    height: 30px;
     align-content: center;
 }
 
 .userTitle {
-    padding: 0 5px;
+    padding: 0 10px;
     border: 1px solid black;
     border-radius: 5px;
-    height: 30px;
+    background: #BFEDEF;
     align-content: center;
 }
 
 .userStatus {
     padding: 0 5px;
-    border: 1px solid black;
+    border: 1px solid;
+    background: #F4E285;
     border-radius: 5px;
     height: 30px;
     align-content: center;
+    margin-left: auto;
 }
 
 .todosBody {
     display: flex;
     flex-direction: row;
     margin-bottom: 22px;
+    max-width: 500px;
 }
 
 .todosItems {
     margin-right: 10px;
 }
+
+.todoBtn {
+    background: #F4A259;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.todoNav {
+    display: flex;
+    flex-direction: row;
+    max-width: 500px;
+}
+
+.todoNavTitle {
+    margin-left: auto;
+}
+
+table {
+    min-width: 500px;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    padding: 8px 0;
+    text-align: left;
+}
+
+.tableStatus {
+    text-align: center  ;
+}
+
+.completed {
+    margin-top: 80px;
+}
+
