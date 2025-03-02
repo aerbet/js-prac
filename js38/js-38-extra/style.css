@@ -5,8 +5,10 @@ body {
 
 .container {
     display: flex;
+    justify-content: space-between;
     margin: 0 auto;
     padding: 0 10px;
+    max-width: 1200px;
 }
 
 .id {
@@ -35,7 +37,7 @@ body {
     margin-left: auto;
 }
 
-.todosBody {
+.todosList {
     display: flex;
     flex-direction: row;
     margin-bottom: 22px;
@@ -78,7 +80,7 @@ th, td {
     text-align: center  ;
 }
 
-.completed {
-    margin-top: 80px;
+.completedStatus {
+    text-align: center;
 }
 
