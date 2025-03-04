@@ -7,12 +7,34 @@
 }
 
 .content__item {
+
+}
+
+.contentItems {
+    margin-right: 5px;
+
+}
+
+.contentHeader {
     display: flex;
     flex-direction: row;
+    padding: 15px;
+    background: #E0E2DB;
     margin-bottom: 22px;
     max-width: 500px;
 }
 
-.contentItems {
-    margin-right: 10px;
+.contentBody {
+    padding: 15px;
+    background: #E6AF2E;
+}
+
+.flagContent {
+    display: flex;
+}
+
+.flagImg {
+    width: 30px;
+    height: 20px;
+    margin-left: 5px;
 }
