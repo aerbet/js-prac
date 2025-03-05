@@ -1,60 +1,32 @@
-const content = document.querySelector('.content');
+const content = document.querySelector('#userList');
 const input = document.querySelector('#textInput');
 const date = document.querySelector('#dateInput');
+const select = document.querySelector('#select');
 const btn = document.querySelector('#saveBtn');
 let postId = 1;
 
 const request = config => {
   const xhr = new XMLHttpRequest();
-  
+
   xhr.addEventListener('load', function () {
     const response = JSON.parse(xhr.responseText);
-    console.log(response.length)
-    for (let i = 0; i < response.length; i++) {
-      let country = response[i];
-      const select = document.createElement('select');
-      
-      content.innerHTML = `
-        <option>${country.flag}</option>
-      `
-    }
-    
+
     if (this.status >= 200 && this.status < 300) {
-      
-      
-      
-      btn.addEventListener('click', () => {
-        const contentItem = document.createElement('div');
-        contentItem.classList.add('content__item');
-        
-        contentItem.innerHTML = `
-              <div class="contentHeader">
-                <div class="contentItems">Post <b>№${postId++}</b></div>
-                <div class="contentItems">at <b>${date.value.split('-').reverse().join('.')}</b></div>
-                <div class="contentItems flagContent">being in: <b style="margin-left: 5px">${select.value}</b><div class="flag"></div></div>
-              </div>
-              <div class="contentBody">
-                <div class="contentItems">${input.value}</div>
-              </div>
-              `;
-        
-        content.appendChild(contentItem);
-        
-        response.forEach(el => document.querySelector('.flag').innerHTML = `<img class="flagImg" src="${el.flag}" alt="flag">`);
-      });
+      for (let i = 0; i < response.length; i++) {
+        const option = document.createElement('option');
+
+        option.textContent = `${response[i].name}`;
+
+        select.appendChild(option);
+      }
     } else {
       config.error(this.status)
     }
   });
-  
-  xhr.addEventListener('error', () => {
-    console.log('No Internet');
-  })
-  
-  xhr.addEventListener('timeout', () => {
-    console.log('Timeout');
-  })
-  
+
+  xhr.addEventListener('error', () => console.log('No Internet'));
+  xhr.addEventListener('timeout', () => console.log('Timeout'));
+
   xhr.open(config.method, config.url);
   xhr.send();
 }
@@ -65,4 +37,58 @@ request({
   error: message => {
     alert(`Error ${message}`);
   },
-})
+});
+
+
+btn.addEventListener('click', () => {
+  const request = config => {
+    const xhr = new XMLHttpRequest();
+
+    xhr.addEventListener('load', function () {
+      const response = JSON.parse(xhr.responseText);
+
+      if (this.status >= 200 && this.status < 300) {
+        const contentItem = document.createElement('div');
+        contentItem.classList.add('content__item');
+
+        contentItem.innerHTML = `
+          <div class="contentHeader">
+            <div class="contentItems">Post <b>№${postId++}</b></div>
+            <div class="contentItems">at <b>${date.value.split('-').reverse().join('.')}</b></div>
+            <div class="contentItems flagContent">being in: <b>${select.value}</b>
+            <img class="flagImg" src="${response[0].flag}" alt=""></div>
+          </div>
+          <div class="contentBody">
+            <div class="contentItems">${input.value}</div>
+          </div>
+          <button class="contentBtn">Remove</button>
+          `;
+
+        content.appendChild(contentItem);
+
+        const contentBtn = contentItem.querySelector('.contentBtn');
+
+        contentBtn.addEventListener('click', () => {
+          contentItem.innerHTML = '';
+          console.log('clicked')
+        })
+      } else {
+        config.error(this.status)
+      }
+    });
+
+    xhr.addEventListener('error', () => console.log('No Internet'));
+    xhr.addEventListener('timeout', () => console.log('Timeout'));
+
+    xhr.open(config.method, config.url);
+    xhr.send();
+  }
+
+  request({
+    method: 'GET',
+    url: `https://restcountries.com/v2/name/${select.value}`,
+    error: message => {
+      alert(`Error ${message}`);
+    },
+  });
+});
