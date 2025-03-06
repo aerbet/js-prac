@@ -1,18 +1,22 @@
 .content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin: 0 auto;
     padding: 0 10px;
     max-width: 1200px;
 }
 
-.content__item {
-
-}
-
 .contentItems {
     margin-right: 5px;
+}
 
+.contentBtn {
+    margin-left: auto;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
 }
 
 .contentHeader {
@@ -20,12 +24,13 @@
     flex-direction: row;
     padding: 15px;
     background: #E0E2DB;
-    max-width: 500px;
+    max-width: 700px;
 }
 
 .contentBody {
     padding: 15px;
     background: #E6AF2E;
+    max-width: 700px;
     margin-bottom: 25px;
 }
 
@@ -39,8 +44,20 @@
     margin-left: 5px;
 }
 
+.userInfo {
+    display: flex;
+    flex-direction: column;
+}
+
 #select {
-    max-width: 115px;
+    width: 120px;
+    height: 25px;
+}
+
+#dateInput {
+    margin-top: 51px;
+    width: 115px;
+    height: 25px;
 }
 
 #saveBtn {
@@ -51,3 +68,15 @@
     width: 85px;
     height: 45px;
 }
+
+#textArea {
+    margin: 0 25px;
+    width: 250px;
+    height: 100px;
+    resize: none;
+}
+
+#userForm {
+    display: flex;
+}
+

@@ -1,5 +1,5 @@
 const content = document.querySelector('#userList');
-const input = document.querySelector('#textInput');
+const text = document.querySelector('#textArea');
 const date = document.querySelector('#dateInput');
 const select = document.querySelector('#select');
 const btn = document.querySelector('#saveBtn');
@@ -59,11 +59,12 @@ btn.addEventListener('click', (e) => {
             <div class="contentItems">at <b>${date.value.split('-').reverse().join('.')}</b></div>
             <div class="contentItems flagContent">being in: <b>${select.value}</b>
             <img class="flagImg" src="${response[0].flag}" alt=""></div>
+            <button class="contentBtn">✖</button>
           </div>
           <div class="contentBody">
-            <div class="contentItems">${input.value}</div>
+            <div class="contentItems">${text.value}</div>
           </div>
-          <button class="contentBtn">Remove</button>
+         
           `;
 
         content.appendChild(contentItem);
