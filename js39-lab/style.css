@@ -3,7 +3,7 @@
     flex-direction: column;
     margin: 0 auto;
     padding: 0 10px;
-    max-width: 1200px;
+    max-width: 900px;
 }
 
 .contentItems {
@@ -24,13 +24,11 @@
     flex-direction: row;
     padding: 15px;
     background: #E0E2DB;
-    max-width: 700px;
 }
 
 .contentBody {
     padding: 15px;
     background: #E6AF2E;
-    max-width: 700px;
     margin-bottom: 25px;
 }
 
@@ -55,7 +53,7 @@
 }
 
 #dateInput {
-    margin-top: 51px;
+    margin: 51px 0 0 22px;
     width: 115px;
     height: 25px;
 }
@@ -65,13 +63,14 @@
     border: 1px solid;
     border-radius: 5px;
     cursor: pointer;
-    width: 85px;
+    width: 115px;
     height: 45px;
+    margin-left: auto;
 }
 
 #textArea {
     margin: 0 25px;
-    width: 250px;
+    width: 350px;
     height: 100px;
     resize: none;
 }
