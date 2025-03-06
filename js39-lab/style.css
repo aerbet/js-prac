@@ -42,3 +42,12 @@
 #select {
     max-width: 115px;
 }
+
+#saveBtn {
+    background: #F4A259;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 85px;
+    height: 45px;
+}

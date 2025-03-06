@@ -4,6 +4,7 @@ const date = document.querySelector('#dateInput');
 const select = document.querySelector('#select');
 const btn = document.querySelector('#saveBtn');
 let postId = 1;
+const postArr = [];
 
 const request = config => {
   const xhr = new XMLHttpRequest();
@@ -40,7 +41,8 @@ request({
 });
 
 
-btn.addEventListener('click', () => {
+btn.addEventListener('click', (e) => {
+  e.preventDefault();
   const request = config => {
     const xhr = new XMLHttpRequest();
 
@@ -69,8 +71,7 @@ btn.addEventListener('click', () => {
         const contentBtn = contentItem.querySelector('.contentBtn');
 
         contentBtn.addEventListener('click', () => {
-          contentItem.innerHTML = '';
-          console.log('clicked')
+          contentItem.remove();
         })
       } else {
         config.error(this.status)
