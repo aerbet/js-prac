@@ -20,6 +20,36 @@ const request = config => {
 
         select.appendChild(option);
       }
+      const parsed = JSON.parse(localStorage.getItem('content')) || [];
+
+      if (localStorage.getItem('content')) {
+        parsed.forEach((item) => {
+          const contentItem = document.createElement('div');
+          contentItem.classList.add('content__item');
+
+          contentItem.innerHTML = `
+          <div class="contentHeader">
+            <div class="contentItems">Post <b>№${item.id}</b></div>
+            <div class="contentItems">at <b>${item.date.split('-').reverse().join('.')}</b></div>
+            <div class="contentItems flagContent">being in: <b>${item.country}</b>
+            <img class="flagImg" src="${item.flag}" alt=""></div>
+            <button class="contentBtn">✖</button>
+          </div>
+          <div class="contentBody">
+            <div class="contentItems">${item.text}</div>
+          </div>
+          `;
+
+          content.appendChild(contentItem);
+
+          const contentBtn = contentItem.querySelector('.contentBtn');
+
+          contentBtn.addEventListener('click', () => {
+            contentItem.remove();
+
+          });
+        })
+      }
     } else {
       config.error(this.status)
     }
@@ -50,6 +80,20 @@ btn.addEventListener('click', (e) => {
       const response = JSON.parse(xhr.responseText);
 
       if (this.status >= 200 && this.status < 300) {
+        const contentObj = {
+          id: postId,
+          date: date.value,
+          country: select.value,
+          flag: response[0].flag,
+          text: text.value,
+        }
+
+        postArr.push(contentObj);
+        const parsed = JSON.parse(localStorage.getItem('content')) || [];
+        parsed.push(contentObj);
+
+        localStorage.setItem('content', JSON.stringify(parsed));
+
         const contentItem = document.createElement('div');
         contentItem.classList.add('content__item');
 
@@ -64,7 +108,6 @@ btn.addEventListener('click', (e) => {
           <div class="contentBody">
             <div class="contentItems">${text.value}</div>
           </div>
-         
           `;
 
         content.appendChild(contentItem);
@@ -73,6 +116,7 @@ btn.addEventListener('click', (e) => {
 
         contentBtn.addEventListener('click', () => {
           contentItem.remove();
+
         })
       } else {
         config.error(this.status)
