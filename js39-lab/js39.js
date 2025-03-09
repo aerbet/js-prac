@@ -3,7 +3,7 @@ const text = document.querySelector('#textArea');
 const date = document.querySelector('#dateInput');
 const select = document.querySelector('#select');
 const btn = document.querySelector('#saveBtn');
-let postId = 1;
+let postId = JSON.parse(localStorage.getItem('postId')) || 1;
 const postArr = [];
 
 const request = config => {
@@ -21,7 +21,8 @@ const request = config => {
         select.appendChild(option);
       }
       const parsed = JSON.parse(localStorage.getItem('content')) || [];
-
+      postArr.push(JSON.parse(localStorage.getItem('content')));
+      console.log(postArr[0])
       if (localStorage.getItem('content')) {
         parsed.forEach((item) => {
           const contentItem = document.createElement('div');
@@ -29,7 +30,7 @@ const request = config => {
 
           contentItem.innerHTML = `
           <div class="contentHeader">
-            <div class="contentItems">Post <b>№${item.id}</b></div>
+            <div class="contentItems" data-id="${item.id}">Post <b>№${item.id}</b></div>
             <div class="contentItems">at <b>${item.date.split('-').reverse().join('.')}</b></div>
             <div class="contentItems flagContent">being in: <b>${item.country}</b>
             <img class="flagImg" src="${item.flag}" alt=""></div>
@@ -45,8 +46,13 @@ const request = config => {
           const contentBtn = contentItem.querySelector('.contentBtn');
 
           contentBtn.addEventListener('click', () => {
+            let parsed = JSON.parse(localStorage.getItem('content')) || []
+            let idR = contentItem.querySelector('.contentItems');
+            let dataId = idR.dataset.id;
+            console.log(dataId)
+            parsed = parsed.filter(el => el.id !== dataId)
+            localStorage.setItem('filtered', JSON.stringify(parsed));
             contentItem.remove();
-
           });
         })
       }
@@ -70,7 +76,6 @@ request({
   },
 });
 
-
 btn.addEventListener('click', (e) => {
   e.preventDefault();
   const request = config => {
@@ -88,18 +93,19 @@ btn.addEventListener('click', (e) => {
           text: text.value,
         }
 
-        postArr.push(contentObj);
         const parsed = JSON.parse(localStorage.getItem('content')) || [];
         parsed.push(contentObj);
 
         localStorage.setItem('content', JSON.stringify(parsed));
+        postId++;
+        localStorage.setItem('postId', JSON.stringify(postId));
 
         const contentItem = document.createElement('div');
         contentItem.classList.add('content__item');
 
         contentItem.innerHTML = `
           <div class="contentHeader">
-            <div class="contentItems">Post <b>№${postId++}</b></div>
+            <div class="contentItems" data-id="${contentObj.id}">Post <b>№${contentObj.id}</b></div>
             <div class="contentItems">at <b>${date.value.split('-').reverse().join('.')}</b></div>
             <div class="contentItems flagContent">being in: <b>${select.value}</b>
             <img class="flagImg" src="${response[0].flag}" alt=""></div>
@@ -111,13 +117,17 @@ btn.addEventListener('click', (e) => {
           `;
 
         content.appendChild(contentItem);
+        text.value = '';
 
         const contentBtn = contentItem.querySelector('.contentBtn');
-
         contentBtn.addEventListener('click', () => {
+          let parsed = JSON.parse(localStorage.getItem('content')) || [];
+          parsed = parsed.filter(el => el.id !== contentObj.id);
+          localStorage.setItem('content', JSON.stringify(parsed));
+          postId--;
+          localStorage.setItem('postId', JSON.stringify(postId));
           contentItem.remove();
-
-        })
+        });
       } else {
         config.error(this.status)
       }
