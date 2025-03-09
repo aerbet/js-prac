@@ -21,8 +21,7 @@ const request = config => {
         select.appendChild(option);
       }
       const parsed = JSON.parse(localStorage.getItem('content')) || [];
-      postArr.push(JSON.parse(localStorage.getItem('content')));
-      console.log(postArr[0])
+      
       if (localStorage.getItem('content')) {
         parsed.forEach((item) => {
           const contentItem = document.createElement('div');
@@ -42,16 +41,15 @@ const request = config => {
           `;
 
           content.appendChild(contentItem);
-
+          
           const contentBtn = contentItem.querySelector('.contentBtn');
 
           contentBtn.addEventListener('click', () => {
-            let parsed = JSON.parse(localStorage.getItem('content')) || []
-            let idR = contentItem.querySelector('.contentItems');
-            let dataId = idR.dataset.id;
-            console.log(dataId)
-            parsed = parsed.filter(el => el.id !== dataId)
-            localStorage.setItem('filtered', JSON.stringify(parsed));
+            let parsed = JSON.parse(localStorage.getItem('content')) || [];
+            parsed = parsed.filter(el => el.id !== item.id);
+            localStorage.setItem('content', JSON.stringify(parsed));
+            postId--;
+            localStorage.setItem('postId', JSON.stringify(postId));
             contentItem.remove();
           });
         })
