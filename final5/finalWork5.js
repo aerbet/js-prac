@@ -29,10 +29,22 @@ btn.addEventListener('click', () => {
           todo.appendChild(content);
 
         const doneBtn = content.querySelector('.doneBtn');
+        const cancelBtn = content.querySelector('.cancelBtn');
 
         doneBtn.addEventListener('click', () => {
+          content.style.border = '1px solid #8bf199';
+          doneBtn.hidden = true;
+          cancelBtn.style.background = '#8bf199';
           done.appendChild(content);
-        })
+        });
+
+        cancelBtn.addEventListener('click', () => {
+          content.style.border = '1px solid #BFEDEF';
+          doneBtn.style.background = '#BFEDEF';
+          cancelBtn.style.background = '#BFEDEF';
+          doneBtn.hidden = false;
+          todo.appendChild(content);
+        });
       }
     });
     

@@ -5,11 +5,37 @@
     border: 1px solid #BFEDEF;
     border-radius: 5px;
     padding: 10px;
-    max-width: 570px;
+    max-width: 670px;
 }
 
 .contentBtn {
     margin-left: auto;
+}
+
+.doneBtn {
+    width: 60px;
+    height: 30px;
+    border: none;
+    background: #BFEDEF;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.doneBtn:hover {
+    background: #4fe2e9;
+}
+
+.cancelBtn {
+    width: 60px;
+    height: 30px;
+    border: none;
+    background: #BFEDEF;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancelBtn:hover {
+    background: #4fe2e9;
 }
 
 .todoList {
