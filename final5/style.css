@@ -1,0 +1,42 @@
+.content {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    border: 1px solid #BFEDEF;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 570px;
+}
+
+.contentBtn {
+    margin-left: auto;
+}
+
+.todoList {
+    margin: 20px 0;
+}
+
+.doneList {
+    margin: 20px 0;
+}
+
+#submitBtn {
+    margin-left: 40px;
+    width: 80px;
+    height: 30px;
+    border: none;
+    background: #BFEDEF;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submitBtn:hover {
+    background: #4fe2e9;
+}
+
+#taskSelect {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 5px;
+}

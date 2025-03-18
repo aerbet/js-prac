@@ -14,13 +14,25 @@ btn.addEventListener('click', () => {
       const response = JSON.parse(this.responseText)
       
       if (this.status >= 200 && this.status < 300) {
-        const div = document.createElement('div');
-        const div1 = document.createElement('div');
-        div.innerHTML = `Task: ${response.activity}`;
-        div1.innerHTML = `Category: ${response.type}`;
-        todo.appendChild(div1);
-        todo.appendChild(div);
-        console.log(response);
+        const content = document.createElement('div');
+        content.classList.add('content')
+        content.innerHTML = `
+          <div class="contentInfo">
+            <div>Category: ${response.type}</div>
+            <div>Task: ${response.activity}</div>
+          </div>
+          <div class="contentBtn">
+            <button class="doneBtn">Done</button>
+            <button class="cancelBtn">Cancel</button>
+          </div>
+        `
+          todo.appendChild(content);
+
+        const doneBtn = content.querySelector('.doneBtn');
+
+        doneBtn.addEventListener('click', () => {
+          done.appendChild(content);
+        })
       }
     });
     
