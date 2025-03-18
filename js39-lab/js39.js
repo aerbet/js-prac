@@ -4,7 +4,6 @@ const date = document.querySelector('#dateInput');
 const select = document.querySelector('#select');
 const btn = document.querySelector('#saveBtn');
 let postId = JSON.parse(localStorage.getItem('postId')) || 1;
-const postArr = [];
 
 const request = config => {
   const xhr = new XMLHttpRequest();
