@@ -3,101 +3,105 @@ const done = document.querySelector('.doneList');
 const point = document.querySelector('#point')
 const select = document.querySelector('#taskSelect');
 const btn = document.querySelector('#submitBtn');
-const data = JSON.parse(localStorage.getItem('data')) || [];
 
+const data = JSON.parse(localStorage.getItem('data')) || {
+  todo: [],
+  done: [],
+  points: 0,
+};
 
-let postId = localStorage.getItem('postId') || 0;
-let points = 0;
-point.innerHTML = `${points}`;
+let postId = JSON.parse(localStorage.getItem('postId')) || 0;
+let points = data.points;
 
-btn.addEventListener('click', (e) => {
-  e.preventDefault();
+const saveData = () => {
+  localStorage.setItem('data', JSON.stringify(data));
+}
+
+const addEvents = (content, contentObj, isDone) => {
+  const doneBtn = content.querySelector('.doneBtn');
+  const cancelBtn = content.querySelector('.cancelBtn');
   
-  const request = config => {
+  doneBtn.addEventListener('click', () => {
+    data.todo = data.todo.filter(el => el.id !== contentObj.id)
+    data.done.push(contentObj);
+    saveData();
     
-    const xhr = new XMLHttpRequest();
+    data.points++;
+    point.innerHTML = `${points}`
     
-    xhr.addEventListener('load', function() {
-      const response = JSON.parse(this.responseText)
-      
-      if (this.status >= 200 && this.status < 300) {
-        const content = document.createElement('div');
-        content.classList.add('content')
-        content.innerHTML = `
+    content.style.border = '1px solid #8bf199';
+    doneBtn.hidden = true;
+    cancelBtn.style.background = '#8bf199';
+    
+    done.appendChild(content);
+  });
+  
+  cancelBtn.addEventListener('click', () => {
+    data.done = data.done.filter(el => el.id !== contentObj.id)
+    data.todo.push(contentObj);
+    saveData();
+    
+    data.points--;
+    point.innerHTML = `${points}`
+    
+    content.style.border = '1px solid #BFEDEF';
+    doneBtn.style.background = '#BFEDEF';
+    cancelBtn.style.background = '#BFEDEF';
+    doneBtn.hidden = false;
+    
+    todo.appendChild(content)
+  });
+  
+  if (isDone) {
+    content.style.border = '1px solid #8bf199';
+    doneBtn.hidden = true;
+    cancelBtn.style.background = '#8bf199';
+  }
+}
+
+const createHtml = (res, isDone = false) => {
+  const content = document.createElement('div');
+  content.classList.add('content');
+  content.innerHTML = `
           <div class="contentInfo">
-            <div>Category: ${response.type}</div>
-            <div>Task: ${response.activity}</div>
+            <div>Category: ${res.type}</div>
+            <div>Task: ${res.activity}</div>
           </div>
           <div class="contentBtn">
             <button class="doneBtn">Done</button>
             <button class="cancelBtn">Cancel</button>
           </div>
         `
-          todo.appendChild(content);
+  
+  if (isDone) {
+    done.appendChild(content);
+  } else {
+    todo.appendChild(content);
+  }
+  
+  addEvents(content, res, isDone)
+}
 
-        const doneBtn = content.querySelector('.doneBtn');
-        const cancelBtn = content.querySelector('.cancelBtn');
-
-        doneBtn.addEventListener('click', () => {
-          points++;
-          point.innerHTML = `${points}`
-          
-          const contentObj = {
-            activity: `${response.activity}`,
-            type: `${response.type}`,
-            id: `${postId}`,
-          }
-          
-          const doneData = JSON.parse(localStorage.getItem('done')) || [];
-          doneData.push(contentObj)
-          
-          localStorage.setItem('done', JSON.stringify(doneData));
-          postId++;
-          localStorage.setItem('postId', JSON.stringify(postId));
-          
-          const parsedTodo = JSON.parse(localStorage.getItem('todo')) || [];
-          parsedTodo.forEach(item => {
-            const parsed = parsedTodo.filter(e => e.id !== item.id);
-            localStorage.setItem('todo', JSON.stringify(parsed));
-            postId--;
-            localStorage.setItem('postId', JSON.stringify(postId));
-          })
-          
-          content.style.border = '1px solid #8bf199';
-          doneBtn.hidden = true;
-          cancelBtn.style.background = '#8bf199';
-          done.appendChild(content);
-        });
-
-        cancelBtn.addEventListener('click', () => {
-          const contentObj = {
-            activity: `${response.activity}`,
-            type: `${response.type}`,
-            id: `${postId}`,
-          }
-          
-          const todoData = JSON.parse(localStorage.getItem('todo')) || [];
-          todoData.push(contentObj)
-          
-          localStorage.setItem('todo', JSON.stringify(todoData));
-          postId++;
-          localStorage.setItem('postId', JSON.stringify(postId));
-          
-          const parsedDone = JSON.parse(localStorage.getItem('done')) || [];
-          parsedDone.forEach(item => {
-            const parsed = parsedDone.filter(e => e.id !== item.id);
-            localStorage.setItem('done', JSON.stringify(parsed));
-            postId--;
-            localStorage.setItem('postId', JSON.stringify(postId));
-          })
-          
-          content.style.border = '1px solid #BFEDEF';
-          doneBtn.style.background = '#BFEDEF';
-          cancelBtn.style.background = '#BFEDEF';
-          doneBtn.hidden = false;
-          todo.appendChild(content);
-        });
+btn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const request = config => {
+    const xhr = new XMLHttpRequest();
+    
+    xhr.addEventListener('load', function() {
+      const response = JSON.parse(this.responseText)
+      
+      if (this.status >= 200 && this.status < 300) {
+        const contentObj = {
+          activity: `${response.activity}`,
+          type: `${response.type}`,
+          id: `${postId}`,
+        }
         
+        createHtml(contentObj);
+        
+        data.todo.push(contentObj);
+        saveData();
+        postId++;
       }
     });
     
@@ -119,74 +123,8 @@ btn.addEventListener('click', (e) => {
 });
 
 function displayDone() {
-  const parsedDone = JSON.parse(localStorage.getItem('done')) || [];
-  
-  parsedDone.forEach(item => {
-    const content = document.createElement('div');
-    content.classList.add('content')
-    content.innerHTML = `
-          <div class="contentInfo">
-            <div>Category: ${item.type}</div>
-            <div>Task: ${item.activity}</div>
-          </div>
-          <div class="contentBtn">
-            <button class="doneBtn">Done</button>
-            <button class="cancelBtn">Cancel</button>
-          </div>
-        `
-    
-    const doneBtn = content.querySelector('.doneBtn');
-    const cancelBtn = content.querySelector('.cancelBtn');
-    
-    content.style.border = '1px solid #8bf199';
-    doneBtn.hidden = true;
-    cancelBtn.style.background = '#8bf199';
-    done.appendChild(content);
-    
-    doneBtn.addEventListener('click', () => {
-      const doneData = JSON.parse(localStorage.getItem('done')) || [];
-      parsedDone.forEach(item => {
-        doneData.push(item);
-      })
-      
-      localStorage.setItem('done', JSON.stringify(doneData));
-      postId++;
-      localStorage.setItem('postId', JSON.stringify(postId));
-      
-      const parsedTodo = JSON.parse(localStorage.getItem('todo')) || [];
-      parsedTodo.forEach(item => {
-        const parsed = parsedTodo.filter(e => e.id !== item.id);
-        localStorage.setItem('todo', JSON.stringify(parsed));
-        postId--;
-        localStorage.setItem('postId', JSON.stringify(postId));
-      })
-      
-      content.style.border = '1px solid #8bf199';
-      doneBtn.hidden = true;
-      cancelBtn.style.background = '#8bf199';
-      done.appendChild(content);
-    });
-    
-    cancelBtn.addEventListener('click', () => {
-      const todoData = JSON.parse(localStorage.getItem('todo')) || [];
-      parsedDone.forEach(item => {
-        todoData.push(item);
-      })
-      
-      localStorage.setItem('todo', JSON.stringify(todoData));
-      postId++;
-      localStorage.setItem('postId', JSON.stringify(postId));
-      
-      const parsed = parsedDone.filter(e => e.id !== item.id);
-      localStorage.setItem('done', JSON.stringify(parsed));
-      
-      content.style.border = '1px solid #BFEDEF';
-      doneBtn.style.background = '#BFEDEF';
-      cancelBtn.style.background = '#BFEDEF';
-      doneBtn.hidden = false;
-      todo.appendChild(content);
-    });
-  })
+  data.todo.forEach(item => createHtml(item, false));
+  data.done.forEach(item => createHtml(item, true))
 }
 
 displayDone();
